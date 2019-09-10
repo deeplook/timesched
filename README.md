@@ -1,4 +1,4 @@
-# A basic world-time scheduler in Angular.
+# A basic world-time scheduler in Angular
 
 Forked from https://github.com/mitsuhiko/timesched as available at http://timesched.pocoo.org/
 
