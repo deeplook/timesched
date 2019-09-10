@@ -143,7 +143,7 @@ def combine_data(countries, cities, timezone_data, windows_zones, weekends):
             rv['C'] = 1
         selectables.append(rv)
 
-    for city in cities.itervalues():
+    for city in iter(cities.values()):
         key = \
             city['country'].lower() + ':' + \
             (city['name'] + ':' + (city['state'] or '')).rstrip(':').lower() \
