@@ -2,7 +2,6 @@ import os
 import re
 import math
 import json
-from itertools import chain
 from xml.etree import cElementTree as et
 
 
@@ -126,22 +125,25 @@ def combine_data(countries, cities, timezone_data, windows_zones, weekends):
     def record_selectable(key, name, full_name, tz,
                           country=None, common_tz=False, sortinfo=None):
         tokens = set(re.sub('[^\s\w]', '', full_name.lower()).split())
-        tokens.update(get_tz_tokens(tz))
+        try:
+            tokens.update(get_tz_tokens(tz))
 
-        rv = {
-            'k': key,
-            'd': full_name,
-            'z': timezone_mapping[tz],
-            'T': ' '.join(sorted(tokens)),
-            'sortinfo': sortinfo or {},
-        }
-        if name != full_name:
-            rv['n'] = name
-        if country is not None:
-            rv['c'] = country
-        if common_tz:
-            rv['C'] = 1
-        selectables.append(rv)
+            rv = {
+                'k': key,
+                'd': full_name,
+                'z': timezone_mapping[tz],
+                'T': ' '.join(sorted(tokens)),
+                'sortinfo': sortinfo or {},
+            }
+            if name != full_name:
+                rv['n'] = name
+            if country is not None:
+                rv['c'] = country
+            if common_tz:
+                rv['C'] = 1
+            selectables.append(rv)
+        except KeyError:
+            pass
 
     for city in iter(cities.values()):
         key = \
