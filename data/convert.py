@@ -104,7 +104,7 @@ def combine_data(countries, cities, timezone_data, windows_zones, weekends):
         target, tz = tzlink.split('|')
         timezone_mapping[tz] = timezone_mapping[target]
     reverse_timezone_mapping = dict((v, k) for k, v in
-                                    timezone_mapping.iteritems())
+                                    iter(timezone_mapping.items()))
 
     def get_tz_tokens(tz):
         # super shitty way to guess the timezone abbreviations.  Totally
@@ -173,7 +173,7 @@ def combine_data(countries, cities, timezone_data, windows_zones, weekends):
             .replace('\'', '')
         record_selectable(key, name.split('/', 1)[-1], name, name)
 
-    for name, tzname in windows_zones.iteritems():
+    for name, tzname in iter(windows_zones.items()):
         key = '-'.join(name.lower().split(None)) \
             .replace('(', '') \
             .replace(')', '') \
@@ -208,7 +208,7 @@ def combine_data(countries, cities, timezone_data, windows_zones, weekends):
         'timezone_links': timezone_data['links'],
         'selectables': selectables,
         'weekends': weekends,
-        'countries': dict((k, v['name']) for k, v in countries.iteritems()),
+        'countries': dict((k, v['name']) for k, v in iter(countries.items())),
     }
 
 
