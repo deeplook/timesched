@@ -1,0 +1,9 @@
+name: timesched
+channels:
+  - conda-forge
+dependencies:
+  - python=3.7
+  - nodejs
+  - pip
+  - pip:
+    - jupyter-server-proxy
