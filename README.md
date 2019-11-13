@@ -1,3 +1,5 @@
+[![Binder](https://mybinder.org/badge_logo.svg)](http://beta.mybinder.org/v2/gh/deeplook/timesched/master) 
+
 # A basic world-time scheduler in Angular
 
 Forked from https://github.com/mitsuhiko/timesched as available at http://timesched.pocoo.org/
